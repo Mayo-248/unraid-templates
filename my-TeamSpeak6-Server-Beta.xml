@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>TeamSpeak6-Server-Beta</Name>
+  <Repository>teamspeaksystems/teamspeak6-server:latest</Repository>
+  <Registry>https://hub.docker.com/r/teamspeaksystems/teamspeak6-server</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project/>
+  <Overview>### Unraid Setup &amp;amp; Configuration&#13;
+&#13;
+**Disclaimer:** I am not affiliated with, nor endorsed by, TeamSpeak Systems GmbH. All rights to the software and brand belong exclusively to TeamSpeak. For the official repository and documentation.&#13;
+&#13;
+* **Registry URL:** https://hub.docker.com/r/teamspeaksystems/teamspeak6-server (Official Docker Hub page)&#13;
+* **Github URL:** https://github.com/teamspeak/teamspeak6-server (Official TS GitHub)&#13;
+&#13;
+When applying this template in Unraid, the following key fields are used:&#13;
+&#13;
+* **Name:** `TeamSpeak6-Server-Beta` (You can change this to your liking)&#13;
+* **Repository:** `teamspeaksystems/teamspeak6-server:latest` (Pulls the official Beta image)&#13;
+&#13;
+* **Extra Parameters:** `--user 99:100` (Crucial! This forces the container to run with Unraid's default user permissions. Without this, the container will crash with a "Failed to create log directory" error because it lacks write access to your appdata folder).&#13;
+&#13;
+### How to get your Admin Token (Privilege Key)&#13;
+On the very first start, the server will generate a one-time admin token. You need this to claim ownership of your server in the TS6 Client.&#13;
+&#13;
+Simply click on the container icon in your Unraid Docker tab and select **Logs**. Look for the string `ServerAdmin privilege key` in the text output, copy the key behind it, and paste it into your TeamSpeak 6 Client when prompted.</Overview>
+  <Category/>
+  <WebUI/>
+  <TemplateURL/>
+  <Icon>https://raw.githubusercontent.com/teamspeak/teamspeak6-server/refs/heads/main/icons/teamspeak_blue.svg</Icon>
+  <ExtraParams>--user 99:100</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1771009914</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="TSSERVER_LICENSE" Target="TSSERVER_LICENSE_ACCEPTED" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">accept</Config>
+  <Config Name="Voice Port" Target="9987" Default="9987" Mode="udp" Description="" Type="Port" Display="always" Required="false" Mask="false">9987</Config>
+  <Config Name="File Transfer Port" Target="30033" Default="" Mode="tcp" Description="" Type="Port" Display="always" Required="false" Mask="false">30033</Config>
+  <Config Name="Appdata" Target="/var/tsserver/" Default="" Mode="rw" Description="" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/Teamspeak6/</Config>
+  <Config Name="Web Query Port" Target="10080" Default="10080" Mode="tcp" Description="" Type="Port" Display="always" Required="false" Mask="false">10080</Config>
+  <TailscaleStateDir/>
+</Container>
